@@ -62,9 +62,7 @@ import decorForm from "../../assets/pics/contact-pic.png";
   </picture>
 </div>
 <script>
-  import { createClient } from '@supabase/supabase-js';
-
-  function formSetup() {
+  async function formSetup() {
     const form = document.getElementById("contact-form") as HTMLFormElement;
     const status = document.getElementById("form-status") as HTMLDivElement;
 
@@ -80,11 +78,12 @@ import decorForm from "../../assets/pics/contact-pic.png";
           message: formData.get('message') as string,
         };
 
-        const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-        const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
-        const supabase = createClient(supabaseUrl, supabaseKey);
-
         try {
+          const { createClient } = await import('@supabase/supabase-js');
+          const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+          const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+          const supabase = createClient(supabaseUrl, supabaseKey);
+
           const { error } = await supabase
             .from('contact_submissions')
             .insert([data]);
