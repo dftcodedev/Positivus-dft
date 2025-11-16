@@ -4,7 +4,7 @@ import 'kleur/colors';
 import { $ as $$MainLayout } from '../chunks/MainLayout_BRROtrsP.mjs';
 import { $ as $$ArticleCard } from '../chunks/ArticleCard__FsFSMRL.mjs';
 import { $ as $$SearchForm } from '../chunks/SearchForm_Dr2XzCwx.mjs';
-import { g as getCollection } from '../chunks/_astro_content_FharIwqs.mjs';
+import { g as getCollection } from '../chunks/_astro_content_DTJq5Xj7.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Astro = createAstro("https://positivustheme.vercel.app");

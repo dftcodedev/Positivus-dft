@@ -62,7 +62,7 @@ import decorForm from "../../assets/pics/contact-pic.png";
   </picture>
 </div>
 <script>
-  async function formSetup() {
+  function formSetup() {
     const form = document.getElementById("contact-form") as HTMLFormElement;
     const status = document.getElementById("form-status") as HTMLDivElement;
 
@@ -79,16 +79,19 @@ import decorForm from "../../assets/pics/contact-pic.png";
         };
 
         try {
-          const { createClient } = await import('@supabase/supabase-js');
-          const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-          const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
-          const supabase = createClient(supabaseUrl, supabaseKey);
+          const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          });
 
-          const { error } = await supabase
-            .from('contact_submissions')
-            .insert([data]);
+          const result = await response.json();
 
-          if (error) throw error;
+          if (!response.ok) {
+            throw new Error(result.error || 'Failed to submit form');
+          }
 
           status.textContent = 'Thank you! We\'ll be in touch soon.';
           status.className = 'mt-4 text-center text-green';

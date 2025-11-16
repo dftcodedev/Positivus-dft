@@ -19,7 +19,7 @@
 <div id="newsletter-status" class="mt-4 text-center text-gray hidden"></div>
 
 <script>
-  async function newsletterSetup() {
+  function newsletterSetup() {
     const form = document.getElementById("newsletter-form") as HTMLFormElement;
     const status = document.getElementById("newsletter-status") as HTMLDivElement;
 
@@ -31,20 +31,21 @@
         const email = formData.get('email') as string;
 
         try {
-          const { createClient } = await import('@supabase/supabase-js');
-          const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-          const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
-          const supabase = createClient(supabaseUrl, supabaseKey);
+          const response = await fetch('/api/newsletter', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, source: 'footer' }),
+          });
 
-          const { error } = await supabase
-            .from('newsletter_signups')
-            .insert([{ email, source: 'footer' }]);
+          const result = await response.json();
 
-          if (error) {
-            if (error.code === '23505') {
+          if (!response.ok) {
+            if (result.error === 'already_subscribed') {
               status.textContent = 'You\'re already subscribed!';
             } else {
-              throw error;
+              throw new Error(result.error || 'Failed to subscribe');
             }
           } else {
             status.textContent = 'Thanks for subscribing!';
