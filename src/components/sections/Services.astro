@@ -13,62 +13,54 @@ import c6 from "../../assets/pics/card-pic6.png";
 const cards = [
   {
     index: 1,
-    titleTop: "Search Engine",
-    titleBottom: "Optimization",
+    titleTop: "Market",
+    titleBottom: "Positioning",
     img: c1,
-    alt: "SEO",
-    link: "https://google.com",
+    alt: "Market Positioning",
+    link: "/services/market-positioning",
   },
   {
     index: 2,
-    titleTop: "Pay-per-click",
-    titleBottom: "advertising",
+    titleTop: "Customer",
+    titleBottom: "Acquisition",
     img: c2,
-    alt: "SEO",
-    link: "https://google.com",
+    alt: "Customer Acquisition",
+    link: "/services/customer-acquisition",
   },
   {
     index: 3,
-    titleTop: "Social Media",
-    titleBottom: "Marketing",
+    titleTop: "Growth",
+    titleBottom: "Strategy",
     img: c3,
-    alt: "SEO",
-    link: "https://google.com",
+    alt: "Growth Strategy",
+    link: "/services/growth-strategy",
   },
   {
     index: 1,
-    titleTop: "Email",
+    titleTop: "Content",
     titleBottom: "Marketing",
     img: c4,
-    alt: "SEO",
-    link: "https://google.com",
+    alt: "Content Marketing",
+    link: "/services/content-marketing",
   },
   {
     index: 2,
-    titleTop: "Content",
-    titleBottom: "Creation",
+    titleTop: "Strategic",
+    titleBottom: "Partnerships",
     img: c5,
-    alt: "SEO",
-    link: "https://google.com",
-  },
-  {
-    index: 3,
-    titleTop: "Analytics and",
-    titleBottom: "Tracking",
-    img: c6,
-    alt: "SEO",
-    link: "https://google.com",
+    alt: "Partnerships",
+    link: "/services/partnerships",
   },
 ];
 
 const description =
-  "At our digital marketing agency, we offer a range of services to help businesses grow and succeed online. These services include";
+  "We help learntech companies reach schools, universities, and organizations through specialized growth services designed for the education technology sector";
 ---
 
 <Section id="services">
   <div class="mt-[140px] mb-5">
     <SectionTitle sectionTitle="Services" description={description} />
-    <div class="grid lg:grid-cols-2 lg:grid-rows-3 gap-10">
+    <div class="grid lg:grid-cols-2 gap-10">
       {
         cards.map((card) => (
           <ServiceCard

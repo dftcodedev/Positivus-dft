@@ -1,8 +1,8 @@
 {
-  "title": "Positivus",
-  "description": "Positivus is a simple and minimalistic blog theme for Ghost. It is designed to be a perfect starting point for your blog project.",
+  "title": "TheLearnBetter.co",
+  "description": "Growth agency helping learntech companies reach educational institutions and organizations. Specialized in market positioning, customer acquisition, and strategic partnerships for the education technology sector.",
   "image": {
-    "src": "https://github.com/manulthanura/Positivus/raw/main/public/cover.png",
-    "alt": "Positivus"
+    "src": "/cover.png",
+    "alt": "TheLearnBetter.co - Growth Agency for LearnTech"
   }
 }
